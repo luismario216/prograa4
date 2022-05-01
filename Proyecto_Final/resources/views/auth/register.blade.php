@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<ajustes-component v-bind:form="vistas" rel="ajustes" v-if="vistas['ajustes'].mostrar" :titulo="'@lang('mensajes.test')'" :guardar="'@lang('mensajes.save')'"></ajustes-component>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

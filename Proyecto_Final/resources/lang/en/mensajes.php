@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'lang' => 'en',
     'test' => 'Change languaje',
     'settings' => 'Settings',
     'login' => 'Login',
@@ -8,4 +9,10 @@ return [
     'logout' => 'Logout',
     'addContact' => 'Add Contact',
     'save' => 'Save',
+    'contact' => 'Contact',
+    'numero' => 'Number',
+    'nombre' => 'Name',
+    'apellido' => 'Lastname',
+    'myContacts' => 'My Contacts',
+    
 ];

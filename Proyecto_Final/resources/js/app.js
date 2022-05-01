@@ -20,6 +20,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('ajustes-component', require('./components/ExampleComponent.vue').default);
+Vue.component('contacto-component', require('./components/AgregarContacto.vue').default);
+Vue.component('mis-contactos', require('./components/MisContactos.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,11 +34,21 @@ const app = new Vue({
     data: {
         vistas: {
             ajustes: {mostrar: false},
+            contacto: {mostrar: false},
+            misContactos: {mostrar: false}
         },
     },
     methods: {
         abrir(vista) {
-            this.vistas[vista].mostrar = !this.vistas[vista].mostrar;
+            for (let v in this.vistas) {
+                console.log(v, vista);
+                if (vista == v) {
+                    this.vistas[v].mostrar = !this.vistas[v].mostrar;
+                }
+                else {
+                    this.vistas[v].mostrar = false;
+                }
+            }
         }
     }
 });
