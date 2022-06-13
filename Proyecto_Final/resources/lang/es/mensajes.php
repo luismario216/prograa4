@@ -14,4 +14,10 @@ return [
     'nombre' => 'Nombre',
     'apellido' => 'Apellido',
     'myContacts' => 'Mis contactos',
+    'ubication' => 'Ubicación',
+    'find' => 'Encuentrame',
+    'routes' => 'Rutas',
+    'search' => 'Buscar',
+    'shareUbication' => 'Compartir mi ubicación',
+
 ];

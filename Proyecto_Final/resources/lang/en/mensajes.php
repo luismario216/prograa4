@@ -14,5 +14,10 @@ return [
     'nombre' => 'Name',
     'apellido' => 'Lastname',
     'myContacts' => 'My Contacts',
+    'ubication' => 'Ubication',
+    'find' => 'Find me',
+    'routes' => 'Routes',
+    'search' => 'Search',
+    'shareUbication' => 'Share my ubication',
     
 ];

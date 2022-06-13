@@ -26,7 +26,10 @@ Route::resource('/usuarios', App\Http\Controllers\UsuariosControlador::class)->m
 Route::post('/new-name',[App\Http\Controllers\UsuariosControlador::class,'update'])->middleware('auth');
 Route::delete('/delete',[App\Http\Controllers\UsuariosControlador::class,'destroy'])->middleware('auth');
 Route::resource('/contactos', App\Http\Controllers\ContactosControlador::class)->middleware('auth');
+Route::get('/newcontacto', [App\Http\Controllers\UsuariosControlador::class, 'usuariosParaAgregar'])->middleware('auth');
 Route::post('/register/user', App\Http\Controllers\UsuariosControlador::class . '@store')->middleware('guest')->name('register.user');
+Route::resource('/rutas', App\Http\Controllers\RutasController::class)->middleware('auth');
+
 
 Route::get('/login/google', [App\Http\Controllers\Auth\GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\GoogleController::class, 'handleGoogleCallback']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Permisos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -19,6 +20,18 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         $userLogin = Socialite::driver('google')->stateless()->user();
+        $permiso = Permisos::get();
+        if ($permiso->isEmpty()) {
+            $permisos = [
+                [
+                    'nombre' => 'Usuario Comun',
+                ],
+                [
+                    'nombre' => 'Administrador',
+                ],
+            ];
+            Permisos::insert($permisos);
+        }
         $user = User::where('email', $userLogin->getEmail())->first();
         if ($user) {
             Auth::login($user);

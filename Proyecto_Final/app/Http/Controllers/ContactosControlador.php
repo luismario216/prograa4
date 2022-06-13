@@ -15,9 +15,8 @@ class ContactosControlador extends Controller
      */
     public function index()
     {
-        // select user.name, user.last_name, user.number from contactos inner join users on contactos.user_id = users.id;
-        $contactos = Contactos::select('users.name', 'users.last_name', 'users.number')
-            ->join('users', 'contactos.user_id', '=', 'users.id')
+        $contactos = Contactos::select('users.id', 'users.name', 'users.last_name', 'users.number')
+            ->join('users', 'contactos.contact_id', '=', 'users.id')
             ->where('contactos.user_id', '=', auth()->user()->id)
             ->get();
         return $contactos;
@@ -41,11 +40,10 @@ class ContactosControlador extends Controller
      */
     public function store(Request $request)
     {
-        $json = [
-            'user_id' => auth()->user()->id,
-            'contact_id' => $request->contact_id,
-        ];
-        Contactos::create($json);
+        $contacto = new Contactos;
+        $contacto->user_id = auth()->user()->id;
+        $contacto->contact_id = $request->contact_id;
+        $contacto->save();
         return redirect()->back();
     }
 

@@ -8,14 +8,12 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{nombre}}</th>
-                                <th scope="col">{{apellido}}</th>
                                 <th scope="col">{{numero}}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="contacto, index in contactos" :key="index">
-                                <td>{{contacto.name}}</td>
-                                <td>{{contacto.last_name}}</td>
+                                <td>{{contacto.name}} {{contacto.last_name}}</td>
                                 <td>{{contacto.number}}</td>
                             </tr>
                         </tbody>

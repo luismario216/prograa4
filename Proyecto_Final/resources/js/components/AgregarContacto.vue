@@ -10,6 +10,17 @@
                             <div class="row mb-12">
                                 <v-select :options="usuarios" v-model="selectedUser" label="label" placeholder="Select a user"></v-select>
                             </div>
+
+                            <div class="row mb-12">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success" v-if="mensaje == 'success'">
+                                        <strong>Contacto agregado con exito</strong>
+                                    </div>
+                                    <div class="alert alert-danger" v-if="mensaje == 'error'">
+                                        <strong>No se pudo agregar el usuario</strong>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-8">
@@ -39,14 +50,15 @@
                 ],
                 usuarios: [],
                 selectedUser: null,
+                mensaje: '',
             }
         },
         methods: {
             conseguirUsuarios() {
-                axios.get('/usuarios').then(response => {
+                axios.get('/newcontacto').then(response => {
                     this.usuarios = response.data;
                     this.usuarios.forEach(user => {
-                        user.label = user.name + ' ' + (user.last_name || '') + '-' + user.number;
+                        user.label = user.name + ' ' + (user.last_name || '') + ' ' + user.number;
                     });
                 }).catch(error => {
                     console.log(error);
@@ -57,7 +69,11 @@
                     contact_id: this.selectedUser.id,
                 }).then(response => {
                     console.log(response);
+                    this.mensaje = 'success';
+                    this.conseguirUsuarios();
+                    this.selectedUser = null;
                 }).catch(error => {
+                    this.mensaje = 'error';
                     console.log(error);
                 });
             },
