@@ -147,7 +147,6 @@
         var ruta = L.Routing.control({
             createMarker: function() { return null; },
             waypoints: rutazz,
-            // No permitir drag and drop de los waypoints
             draggable: false,
             routeWhileDragging: false,
             showAlternatives: false,
